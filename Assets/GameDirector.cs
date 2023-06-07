@@ -31,7 +31,7 @@ public class GameDirector : MonoBehaviour
         timeGauge.fillAmount = lastTime / 100f;
 
         // Žc‚èŽžŠÔ‚ð‚O‚É‚È‚Á‚½‚çƒŠƒ[ƒh
-        if (lastTime > 0)
+        if (lastTime < 0)
         {
             SceneManager.LoadScene("GameScene");
         }

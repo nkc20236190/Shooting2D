@@ -527,7 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kyoriLabel: {fileID: 44513412}
-  timeGauge: {fileID: 0}
+  timeGauge: {fileID: 2123548327}
 --- !u!4 &1711679355
 Transform:
   m_ObjectHideFlags: 0
