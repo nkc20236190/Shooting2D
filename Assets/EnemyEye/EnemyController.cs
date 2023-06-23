@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 6);		    // 寿命
-        enemyType = Random.Range(0, 3); // 敵の種類
+        enemyType = Random.Range(0, 4); // 敵の種類
         speed = 5;                      // 移動速度
         dir = Vector3.left;             // 移動方向
         rad = Time.time;                // サインカーブの動きをずらす用
@@ -33,7 +33,11 @@ public class EnemyController : MonoBehaviour
         // エネミータイプ２だけ縦移動（サインカーブ）追加
         if(enemyType == 2)
         {
-            dir.y = Mathf.Sin(rad + Time.time * 5f);
+            dir.y = Mathf.Sin(rad + Time.time * 2f);
+        }
+        if(enemyType == 3)
+        {
+            dir.x = Mathf.Cos(rad + Time.time * 1f);
         }
 
         // 移動処理

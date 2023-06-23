@@ -15,7 +15,7 @@ public class ItemController2 : MonoBehaviour
         speed = 6f;                     // 落下速度
 
         // itemType=0:赤 / itemType=1:緑 / itemType=2:青 / itemType=3:黒
-        Color[] col = { Color.red, Color.magenta, Color.blue,Color.black };
+        Color[] col = { Color.red, Color.magenta, Color.blue,Color.yellow };
         spRender = GetComponent<SpriteRenderer>();
         spRender.color = col[itemType];
 
@@ -58,10 +58,9 @@ public class ItemController2 : MonoBehaviour
                 pCon.Speed     = 5;
                 pCon.ShotLevel = 0;
             }
-            else if (itemType ==3)  // 黒：弾レベル3　スピード５
+            else if (itemType ==3)  // 黄色：時間１０秒プラス
             {
-                pCon.Speed = 5;
-                pCon.ShotLevel = 3;
+                GameDirector.lastTime += 10f;
             }
 
             // 自分（アイテム）削除
