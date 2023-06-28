@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject shotPre; // 弾のプレハブをセット
 
+    AudioClip seClip;  // 効果音を保存する変数
+    Vector3 sePos;       // 効果音を再生する位置を保存する変数
+
     // 自キャラのスピードの値を他のスクリプトから
     // 参照・変更するためのプロパティ
     public float Speed
@@ -41,6 +44,9 @@ public class PlayerController : MonoBehaviour
         shotLevel = 0;  // 弾レベル
         timer     = 0;  // 時間初期化
         speed     = 10; // 初期スピード
+
+        seClip = Resources.Load<AudioClip>("Audio/SE/maou_se_magic_fire09");
+        sePos = GameObject.Find("Main Camera").transform.position;
     }
 
     void Update()
@@ -76,6 +82,7 @@ public class PlayerController : MonoBehaviour
                 // 位置と回転情報をセットして生成
                 Instantiate(shotPre, p, rot);
             }
+            AudioSource.PlayClipAtPoint(seClip, sePos);
         }
 
         // 画面内制限

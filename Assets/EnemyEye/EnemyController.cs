@@ -14,6 +14,9 @@ public class EnemyController : MonoBehaviour
     float shotInterval = 2f;    // 弾の発射間隔
     GameDirector gd;            // GameDirectorコンポーネントを保存
 
+    AudioClip seClip;  // 効果音を保存する変数
+    Vector3 sePos;       // 効果音を再生する位置を保存する変数
+
     void Start()
     {
         Destroy(gameObject, 6);		    // 寿命
@@ -25,6 +28,9 @@ public class EnemyController : MonoBehaviour
 
         // GameDirectorコンポーネントを保存
         gd = GameObject.Find("GameDirector").GetComponent<GameDirector>();
+
+        seClip = Resources.Load<AudioClip>("Audio/SE/maou_se_battle_explosion06");
+        sePos = GameObject.Find("Main Camera").transform.position;
 
     }
 
@@ -69,6 +75,8 @@ public class EnemyController : MonoBehaviour
 
             // 自分（敵）削除
             Destroy(gameObject);
+
+            AudioSource.PlayClipAtPoint(seClip, sePos);
         }
 
         // 重なった相手のタグが【PlayerShot】だったら
@@ -82,6 +90,10 @@ public class EnemyController : MonoBehaviour
 
             // 自分（敵）削除
             Destroy(gameObject);
+
+            
+            AudioSource.PlayClipAtPoint(seClip, sePos);
+
         }
     }
 }
