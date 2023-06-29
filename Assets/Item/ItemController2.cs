@@ -9,6 +9,9 @@ public class ItemController2 : MonoBehaviour
     int itemType;               // アイテムの種類
     float speed;                // 落下速度
 
+    AudioClip seClip;  // 効果音を保存する変数
+    Vector3 sePos;       // 効果音を再生する位置を保存する変数
+
     void Start()
     {
         itemType = Random.Range(0, 4);  // アイテムの種類0～3
@@ -26,7 +29,10 @@ public class ItemController2 : MonoBehaviour
         transform.position = pos;
 
         // 寿命3秒
-        Destroy(gameObject, 3f); 
+        Destroy(gameObject, 3f);
+
+        seClip = Resources.Load<AudioClip>("Audio/SE/maou_se_battle02");
+        sePos = GameObject.Find("Main Camera").transform.position;
     }
 
     void Update()
@@ -53,7 +59,7 @@ public class ItemController2 : MonoBehaviour
             {
                 pCon.Speed += 5;     
             }
-            else if (itemType == 2)  // 青：弾レベル０　スピード５
+            else if (itemType == 2)  // 青：弾レベル0　スピード５
             {
                 pCon.Speed     = 5;
                 pCon.ShotLevel = 0;
@@ -63,6 +69,7 @@ public class ItemController2 : MonoBehaviour
                 GameDirector.lastTime += 10f;
             }
 
+            AudioSource.PlayClipAtPoint(seClip, sePos);
             // 自分（アイテム）削除
             Destroy(gameObject);
         }

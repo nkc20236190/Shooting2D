@@ -9,6 +9,9 @@ public class EnemyShotController : MonoBehaviour
     GameDirector gd;    // GameDirectorコンポーネント保存
     Transform player;   // プレーヤーのトランスフォームコンポーネントを保存
 
+    AudioClip seClip;  // 効果音を保存する変数
+    Vector3 sePos;       // 効果音を再生する位置を保存する変数
+
     void Start()
     {
         // プレーヤーの情報を保存
@@ -25,6 +28,8 @@ public class EnemyShotController : MonoBehaviour
 
         // 寿命
         Destroy(gameObject, 3f);
+        seClip = Resources.Load<AudioClip>("Audio/SE/damage1");
+        sePos = GameObject.Find("Main Camera").transform.position;
     }
 
     void Update()
@@ -43,6 +48,8 @@ public class EnemyShotController : MonoBehaviour
             GameDirector.lastTime -= 1f;
             gd.Kyori -= 500;        // 距離を減らす
             Destroy(gameObject);    // 自分（敵弾）削除
+
+            AudioSource.PlayClipAtPoint(seClip, sePos);
         }
     }
 

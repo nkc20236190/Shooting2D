@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         timer     = 0;  // 時間初期化
         speed     = 10; // 初期スピード
 
-        seClip = Resources.Load<AudioClip>("Audio/SE/maou_se_magic_fire09");
+        seClip = Resources.Load<AudioClip>("Audio/SE/shoot1");
         sePos = GameObject.Find("Main Camera").transform.position;
     }
 

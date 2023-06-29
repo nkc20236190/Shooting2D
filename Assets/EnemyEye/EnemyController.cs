@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     GameDirector gd;            // GameDirectorコンポーネントを保存
 
     AudioClip seClip;  // 効果音を保存する変数
+    AudioClip dioClip;
     Vector3 sePos;       // 効果音を再生する位置を保存する変数
 
     void Start()
@@ -30,6 +31,7 @@ public class EnemyController : MonoBehaviour
         gd = GameObject.Find("GameDirector").GetComponent<GameDirector>();
 
         seClip = Resources.Load<AudioClip>("Audio/SE/maou_se_battle_explosion06");
+        dioClip = Resources.Load<AudioClip>("Audio/SE/maou_se_battle18");
         sePos = GameObject.Find("Main Camera").transform.position;
 
     }
@@ -55,6 +57,7 @@ public class EnemyController : MonoBehaviour
         {
             shotTime = 0;
             Instantiate(ShotPre, transform.position, transform.rotation);
+            AudioSource.PlayClipAtPoint(dioClip, sePos);
         }
     }
 
