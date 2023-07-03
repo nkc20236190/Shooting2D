@@ -62,7 +62,7 @@ public class GameDirector : MonoBehaviour
         // 制限時間が０より小さくなったらタイトルシーンへ
         if(lastTime < 0)
         {
-            SceneManager.LoadScene("TitleScene");
+            SceneManager.LoadScene("GameoverScene");
         }
     }
 }
